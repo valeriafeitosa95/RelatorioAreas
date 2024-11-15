@@ -66,7 +66,7 @@ with tab1:
         with st.container(border=True):
             fig = px.pie(segmento, values='Pedidos', names='Segmento', title='Pedidos por Seguimento',
                         hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 18, 'color': 'white'})
+            fig.update_layout(titlefont={'family':'Arial','size': 17, 'color': 'white'})
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
@@ -76,7 +76,7 @@ with tab1:
         with st.container(border=True):
             fig = px.pie(categoria, values='Pedidos', names='Categoria', title='Pedidos por Categoria de Produto',
                         hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 18, 'color': 'white'})
+            fig.update_layout(titlefont={'family':'Arial','size': 17, 'color': 'white'})
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
@@ -86,7 +86,7 @@ with tab1:
         with st.container(border=True):
             fig = px.pie(canalAtendimento, values='Pedidos', names='Canal_Atendimento', title='Pedidos por Canal de Atendimento',
                         hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 18, 'color': 'white'})
+            fig.update_layout(titlefont={'family':'Arial','size': 17, 'color': 'white'})
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
