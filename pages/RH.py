@@ -14,7 +14,6 @@ st.write('')
 # Carregando os dados
 dfRH = pd.read_excel('db/RH.xlsx')
 
-
 # Métricas das colunas de 1 a 4.
 col1, col2, col3, col4 = st.columns(4)
 with col1:
@@ -47,7 +46,7 @@ nivel = dfRH.groupby('Nivel_Satisfacao_Trabalho', as_index=False)['Id_Funcionari
 col5, col6 = st.columns(2, gap="small")
 with st.container(border=True):
     with col5:
-        fig = px.pie(genero, values='Ativo', names='Genero', title='Funcionários por Genero', 
+        fig = px.pie(genero, values='Ativo', names='Genero', title='Funcionários por Gênero', 
                     color_discrete_sequence=px.colors.sequential.Jet)
         fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
         fig.update_layout(legend=dict(orientation="h"), legend_font_size=16)
