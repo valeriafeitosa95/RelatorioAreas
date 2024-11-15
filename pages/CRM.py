@@ -61,7 +61,8 @@ with tab1:
     canalAtendimento = dfCom.groupby('Canal_Atendimento', as_index=False)['Pedidos'].count()
 
     # Colunas 6, 7 e 8 contendo os gráficos de rosca.
-    st.write('**Pedidos**')
+    with st.container(border=True):
+        st.write('**Pedidos**')
     col6, col7, col8 = st.columns(3)
     with col6:
         with st.container(border=True):
