@@ -61,14 +61,13 @@ with tab1:
     canalAtendimento = dfCom.groupby('Canal_Atendimento', as_index=False)['Pedidos'].count()
 
     # Colunas 6, 7 e 8 contendo os gráficos de rosca.
-    with st.container(border=True):
-        st.write('**Pedidos**')
+   
     col6, col7, col8 = st.columns(3)
     with col6:
         with st.container(border=True):
-            fig = px.pie(segmento, values='Pedidos', names='Segmento', title='Por Seguimento',
+            fig = px.pie(segmento, values='Pedidos', names='Segmento', title='Pedidos por Seguimento',
                         hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 18, 'color': 'white'})
+            fig.update_layout(titlefont={'family':'Arial','size': 16, 'color': 'white'})
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
@@ -76,9 +75,9 @@ with tab1:
             st.write('')
     with col7:
         with st.container(border=True):
-            fig = px.pie(categoria, values='Pedidos', names='Categoria', title='Por Categoria de Produto',
+            fig = px.pie(categoria, values='Pedidos', names='Categoria', title='Pedido por Categoria de Produto',
                         hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 18, 'color': 'white'})
+            fig.update_layout(titlefont={'family':'Arial','size': 16, 'color': 'white'})
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
@@ -86,9 +85,9 @@ with tab1:
             st.write('')
     with col8:
         with st.container(border=True):
-            fig = px.pie(canalAtendimento, values='Pedidos', names='Canal_Atendimento', title='Por Canal de Atendimento',
+            fig = px.pie(canalAtendimento, values='Pedidos', names='Canal_Atendimento', title='Pedidos por Canal de Atendimento',
                         hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 18, 'color': 'white'})
+            fig.update_layout(titlefont={'family':'Arial','size': 16, 'color': 'white'})
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
