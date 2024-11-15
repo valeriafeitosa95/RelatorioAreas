@@ -29,7 +29,7 @@ with tab1:
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         with st.container(border=True):
-            total= round(dfCom['Valor_Total'].sum())
+            total= round(dfCom['Valor_Total'].sum(),2)
             faturamento= '{0:,}'.format(total).replace(',','.')
             st.metric(label='**Faturamento (R$)**', value=faturamento)
     with col2:
@@ -61,12 +61,13 @@ with tab1:
     canalAtendimento = dfCom.groupby('Canal_Atendimento', as_index=False)['Pedidos'].count()
 
     # Colunas 6, 7 e 8 contendo os gráficos de rosca.
+    st.write('Pedidos')
     col6, col7, col8 = st.columns(3)
     with col6:
         with st.container(border=True):
-            fig = px.pie(segmento, values='Pedidos', names='Segmento', title='Pedidos por Seguimento',
+            fig = px.pie(segmento, values='Pedidos', names='Segmento', title='Por Seguimento',
                         hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 17, 'color': 'white'})
+            fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
@@ -74,9 +75,9 @@ with tab1:
             st.write('')
     with col7:
         with st.container(border=True):
-            fig = px.pie(categoria, values='Pedidos', names='Categoria', title='Pedidos por Categoria de Produto',
+            fig = px.pie(categoria, values='Pedidos', names='Categoria', title='Por Categoria de Produto',
                         hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 17, 'color': 'white'})
+            fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
@@ -84,9 +85,9 @@ with tab1:
             st.write('')
     with col8:
         with st.container(border=True):
-            fig = px.pie(canalAtendimento, values='Pedidos', names='Canal_Atendimento', title='Pedidos por Canal de Atendimento',
+            fig = px.pie(canalAtendimento, values='Pedidos', names='Canal_Atendimento', title='Por Canal de Atendimento',
                         hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 17, 'color': 'white'})
+            fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
