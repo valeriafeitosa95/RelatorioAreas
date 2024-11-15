@@ -62,7 +62,7 @@ with tab1:
 
     # Colunas 6, 7 e 8 contendo os gráficos de rosca.
     st.write('### Pedidos')
-    st.write('__')
+    st.write('_________')
     col6, col7, col8 = st.columns(3)
     with col6:
         with st.container(border=True):
