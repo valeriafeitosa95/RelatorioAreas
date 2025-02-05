@@ -6,6 +6,9 @@ import pandas as pd
 # Configuração da página
 st.set_page_config(page_title='Dashboard Areas', layout= 'wide', page_icon= '🌐', initial_sidebar_state='auto')
 
+# Link CSS
+with open('style.css') as f:st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 # Título
 st.header('RELATÓRIO DE RECURSOS HUMANOS', divider="blue")
 st.write('')
