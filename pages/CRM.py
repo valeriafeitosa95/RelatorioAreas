@@ -31,7 +31,7 @@ with tab1:
         with st.container(border=True):
             total= round(dfCom['Valor_Total'].sum())
             faturamento= '{0:,}'.format(total).replace(',','.')
-            st.metric(label='**Faturamento (R$)**   ', value=faturamento)
+            st.metric(label='**Faturamento (R$)**', value=faturamento)
     with col2:
         with st.container(border=True):
             media= round(dfCom['Valor_Total'].mean())
@@ -61,13 +61,11 @@ with tab1:
     canalAtendimento = dfCom.groupby('Canal_Atendimento', as_index=False)['Pedidos'].count()
 
     # Colunas 6, 7 e 8 contendo os gráficos de rosca.
-   
     col6, col7, col8 = st.columns(3)
     with col6:
         with st.container(border=True):
-            fig = px.pie(segmento, values='Pedidos', names='Segmento', title='Pedidos por Seguimento',
-                        hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 16, 'color': 'white'})
+            fig = px.pie(segmento, values='Pedidos', names='Segmento', hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
+            fig.update_layout(title_text ='Pedidos por Seguimento', title_xref='paper', title_font_color='White')
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
@@ -75,9 +73,8 @@ with tab1:
             st.write('')
     with col7:
         with st.container(border=True):
-            fig = px.pie(categoria, values='Pedidos', names='Categoria', title='Pedido por Categoria de Produto',
-                        hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 16, 'color': 'white'})
+            fig = px.pie(categoria, values='Pedidos', names='Categoria', hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
+            fig.update_layout(title_text ='Pedidos por Categoria de Produto', title_xref='paper', title_font_color='White')
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
@@ -85,9 +82,8 @@ with tab1:
             st.write('')
     with col8:
         with st.container(border=True):
-            fig = px.pie(canalAtendimento, values='Pedidos', names='Canal_Atendimento', title='Pedidos por Canal de Atendimento',
-                        hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
-            fig.update_layout(titlefont={'family':'Arial','size': 16, 'color': 'white'})
+            fig = px.pie(canalAtendimento, values='Pedidos', names='Canal_Atendimento', hole=0.3, color_discrete_sequence=px.colors.sequential.RdBu)
+            fig.update_layout(title_text ='Pedidos por Canal de Atendimento', title_xref='paper', title_font_color='White')
             fig.update_layout(legend=dict(orientation="h"))
             fig.update_traces(textfont_size=16)
             st.plotly_chart(fig, use_container_width=True)
@@ -98,23 +94,21 @@ with tab1:
     col9, col10 = st.columns(2)
     with col9:
         with st.container(border=True):
-            fig = px.bar(dfDados.sort_values(by='Pedidos', ascending= True), y= 'Pais', x='Clientes',
-                        title='Clientes por País',labels=True , color_discrete_sequence=px.colors.sequential.Turbo_r)
+            fig = px.bar(dfDados.sort_values(by='Pedidos', ascending= True), y= 'Pais', x='Clientes', labels=True , color_discrete_sequence=px.colors.sequential.Turbo_r)
+            fig.update_layout(title_text ='Clientes por País', title_xref='paper', title_font_color='White')
+            fig.update_layout(font={'family':'Arial','size': 16, 'color': 'white'})
             fig.update_xaxes(title = "")
             fig.update_yaxes(title = "")
-            fig.update_layout(titlefont={'family':'Arial','size': 18, 'color': 'white'})
-            fig.update_layout(font={'family':'Arial','size': 16, 'color': 'white'})
             st.plotly_chart(fig, use_container_width=True)
             st.caption('Fonte: Dados fictícios')
             st.write(' ')
     with col10:
         with st.container(border=True):
-            fig = px.bar(totalpais.sort_values(by='Pedidos', ascending= True), y= 'Pais', x='Pedidos',
-                        title='Pedidos por País', color_discrete_sequence=px.colors.sequential.Turbo_r)
+            fig = px.bar(totalpais.sort_values(by='Pedidos', ascending= True), y= 'Pais', x='Pedidos', color_discrete_sequence=px.colors.sequential.Turbo_r)
+            fig.update_layout(title_text ='Pedidos por País', title_xref='paper', title_font_color='White')
+            fig.update_layout(font={'family':'Arial','size': 16, 'color': 'white'})
             fig.update_xaxes(title = "")
             fig.update_yaxes(title = "")
-            fig.update_layout(titlefont={'family':'Arial','size': 18, 'color': 'white'})
-            fig.update_layout(font={'family':'Arial','size': 16, 'color': 'white'})
             st.plotly_chart(fig, use_container_width=True)
             st.caption('Fonte: Dados fictícios')
             st.write(' ')

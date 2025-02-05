@@ -14,6 +14,7 @@ st.write('')
 # Carregando os dados
 dfRH = pd.read_excel('db/RH.xlsx')
 
+
 # Métricas das colunas de 1 a 4.
 col1, col2, col3, col4 = st.columns(4)
 with col1:
@@ -46,40 +47,34 @@ nivel = dfRH.groupby('Nivel_Satisfacao_Trabalho', as_index=False)['Id_Funcionari
 col5, col6 = st.columns(2, gap="small")
 with st.container(border=True):
     with col5:
-        fig = px.pie(genero, values='Ativo', names='Genero', title='Funcionários por Gênero', 
-                    color_discrete_sequence=px.colors.sequential.Jet)
-        fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
+        fig = px.pie(genero, values='Ativo', names='Genero', color_discrete_sequence=px.colors.sequential.Jet)
+        fig.update_layout(title_text = 'Funcionários por Genero', title_xref='paper', title_font_color='White')
         fig.update_layout(legend=dict(orientation="h"), legend_font_size=16)
         fig.update_traces(textfont_size=16)
         st.plotly_chart(fig, use_container_width=True)
         st.caption('Fonte: Dados fictícios')
         st.write(' ')
 
-        fig = px.pie(disponivel, values='Ativo', names='Disponivel_Hora_Extra', title='Disponíveis para Hora Extra',
-                    color_discrete_sequence=px.colors.sequential.YlGnBu_r)
-        fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
+        fig = px.pie(disponivel, values='Ativo', names='Disponivel_Hora_Extra', color_discrete_sequence=px.colors.sequential.YlGnBu_r)
+        fig.update_layout(title_text = 'Disponíveis para Hora Extra', title_xref='paper', title_font_color='White')
         fig.update_layout(legend=dict(orientation="h"), legend_font_size=16)
         fig.update_traces(textfont_size=16)
         st.plotly_chart(fig, use_container_width=True)
         st.caption('Fonte: Dados fictícios')
         st.write(' ')
     with col6:
-        fig = px.bar(area.sort_values(by='Ativo', ascending= True), y= 'Departamento', x='Ativo',
-                    title='Funcionários por Departamento', color='Ativo')
+        fig = px.bar(area.sort_values(by='Ativo', ascending= True), y= 'Departamento', x='Ativo', color='Ativo')
+        fig.update_layout(title_text = 'Funcionários por Departamento', title_xref='paper', title_font_color='White')
         fig.update_xaxes(title = "")
         fig.update_yaxes(title = "")
-        fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
-        fig.update_layout(font={'family':'Arial','size': 18, 'color': 'white'})
         st.plotly_chart(fig, use_container_width=True)
         st.caption('Fonte: Dados fictícios')
         st.write(' ')
 
-        fig = px.bar(nivel.sort_values(by='Id_Funcionario', ascending= True), x='Nivel_Satisfacao_Trabalho', 
-                    y='Id_Funcionario', title='Nível de Satisfação no Trabalho', color_discrete_sequence=px.colors.sequential.Jet)
+        fig = px.bar(nivel.sort_values(by='Id_Funcionario', ascending= True), x='Nivel_Satisfacao_Trabalho', y='Id_Funcionario', color_discrete_sequence=px.colors.sequential.Jet)
+        fig.update_layout(title_text = 'Nível de Satisfação no Trabalho', title_xref='paper', title_font_color='White')
         fig.update_xaxes(title = "")
         fig.update_yaxes(title = "")
-        fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
-        fig.update_layout(font={'family':'Arial','size': 18, 'color': 'white'})
         st.plotly_chart(fig, use_container_width=True)
         st.caption('Fonte: Dados fictícios')
         st.write(' ')

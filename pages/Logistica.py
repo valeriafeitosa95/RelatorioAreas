@@ -1,3 +1,4 @@
+
 # Importando as bibliotecas
 import streamlit as st 
 import plotly_express as px
@@ -63,9 +64,8 @@ equipe = filtro.groupby('Equipe_Entrega', as_index=False)['Pedidos'].count()
 col4, col5 = st.columns(2)
 with col4:
     with st.container(border=True):
-        fig = px.pie(status, values='Pedidos', names='Status_Entrega', title='Entregas por Status', 
-                 color_discrete_sequence=px.colors.sequential.Agsunset)
-        fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
+        fig = px.pie(status, values='Pedidos', names='Status_Entrega', color_discrete_sequence=px.colors.sequential.Agsunset)
+        fig.update_layout(title_text ='Entregas por Status', title_xref='paper', title_font_color='White')
         fig.update_layout(legend=dict(orientation="h"))
         fig.update_traces(textfont_size=16)
         st.plotly_chart(fig, use_container_width=True)
@@ -73,12 +73,11 @@ with col4:
         st.write(' ')
 with col5:
     with st.container(border=True):
-        fig = px.bar(equipe.sort_values(by='Pedidos', ascending= True), y= 'Equipe_Entrega', x='Pedidos',
-             title='Entregas por Equipe', color_discrete_sequence=px.colors.sequential.Agsunset)
+        fig = px.bar(equipe.sort_values(by='Pedidos', ascending= True), y= 'Equipe_Entrega', x='Pedidos', color_discrete_sequence=px.colors.sequential.Agsunset)
+        fig.update_layout(title_text ='Entregas por Equipe', title_xref='paper', title_font_color='White')
+        fig.update_layout(font={'family':'Arial','size': 14, 'color': 'white'})
         fig.update_xaxes(title = "")
         fig.update_yaxes(title = "")
-        fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
-        fig.update_layout(font={'family':'Arial','size': 14, 'color': 'white'})
         st.plotly_chart(fig, use_container_width=True)
         st.caption('Fonte: Dados fictícios')
         st.write(' ')
@@ -92,21 +91,19 @@ cidade = filtro.groupby('Cidade', as_index=False)['Pedidos'].count()
 col6, col7 = st.columns(2)
 with col6:
     with st.container(border=True):
-        fig = px.bar(regiao.sort_values(by='Pedidos', ascending= False), x='Região', y='Pedidos',
-             title='Entregas por Região', color_discrete_sequence=px.colors.sequential.Agsunset)
+        fig = px.bar(regiao.sort_values(by='Pedidos', ascending= False), x='Região', y='Pedidos', color_discrete_sequence=px.colors.sequential.Agsunset)
+        fig.update_layout(title_text ='Entregas por Região', title_xref='paper', title_font_color='White')
+        fig.update_layout(font={'family':'Arial','size': 14, 'color': 'white'})
         fig.update_xaxes(title = "")
         fig.update_yaxes(title = "")
-        fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
-        fig.update_layout(font={'family':'Arial','size': 14, 'color': 'white'})
         st.plotly_chart(fig, use_container_width=True)
         st.caption('Fonte: Dados fictícios')
         st.write(' ')
 with col7:
     with st.container(border=True):
-       fig = px.treemap(cidade, path=['Cidade'], values='Pedidos', title='Entregas por Cidade',
-                        color_discrete_sequence=px.colors.sequential.Agsunset)
+       fig = px.treemap(cidade, path=['Cidade'], values='Pedidos', color_discrete_sequence=px.colors.sequential.Agsunset)
        fig.update_layout(autosize=False)
-       fig.update_layout(titlefont={'family':'Arial','size': 20, 'color': 'white'})
+       fig.update_layout(title_text ='Entregas por Cidade', title_xref='paper', title_font_color='White')
        st.plotly_chart(fig, use_container_width=True)
        st.caption('Fonte: Dados fictícios')
        st.write(' ')

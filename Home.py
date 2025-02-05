@@ -9,7 +9,7 @@ st.set_page_config(page_title='Dashboard Areas', layout= 'wide', page_icon= 'ğŸŒ
 
 # Boas vindas - gif
 st.subheader('OlÃ¡, seja bem-vindo(a)',divider='grey')
-file_ = open("gif.gif", "rb")
+file_ = open("imagens/gif.gif", "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 file_.close()
